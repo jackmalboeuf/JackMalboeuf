@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class ShootProjectile : MonoBehaviour
 {
@@ -7,6 +8,8 @@ public class ShootProjectile : MonoBehaviour
     gunType typeOfGun = gunType.MachineGun;
     [SerializeField]
     Rigidbody projectile;
+    [SerializeField]
+    Slider reloadSlider;
     [SerializeField]
     float fireRate;
     [SerializeField]
@@ -19,7 +22,7 @@ public class ShootProjectile : MonoBehaviour
     float magazineSize;
     [SerializeField]
     float reloadSpeed;
-
+    
     public float damage;
     public float range;
     public float damageFallOff;
@@ -27,6 +30,9 @@ public class ShootProjectile : MonoBehaviour
     public float bulletDrop;
     public bool AoEOn;
     public float AoESize;
+
+    [HideInInspector]
+    public Vector3 rangeEndPoint;
 
     enum gunType { MachineGun = 0, ShotGun = 1, Rifle = 2, LazerGun = 3 }
     float nextFireTime;
@@ -54,18 +60,36 @@ public class ShootProjectile : MonoBehaviour
                 {
                     nextFireTime = Time.time + fireRate;
 
+                    Camera playerCamera = transform.parent.parent.GetComponent<Camera>();
+
+                    Vector3 rayStart = playerCamera.ViewportToWorldPoint(new Vector3(0.5f, 0.5f, 0));
+                    RaycastHit rayHit;
+                    Ray lookRay = new Ray(rayStart, playerCamera.transform.forward);
+                    
+                    rangeEndPoint = lookRay.GetPoint(range);
+
+                    if (Physics.Raycast(lookRay, out rayHit, range) && rayHit.collider.tag != "Damager")
+                    {
+                        transform.parent.LookAt(rayHit.point);
+                    }
+                    else
+                    {
+                        transform.parent.LookAt(lookRay.GetPoint(range));
+                    }
+
                     float xRand = Random.Range(0, accuracy);
                     float zRand = Random.Range(0, 359);
 
                     transform.localEulerAngles = new Vector3(xRand, transform.localEulerAngles.y, transform.localEulerAngles.z);
                     transform.Rotate(transform.parent.forward, zRand, Space.World);
-
+                    
                     Rigidbody bullet = Instantiate(projectile, transform.position, transform.rotation, null) as Rigidbody;
                     bullet.transform.localScale = new Vector3(bullet.transform.localScale.x * size, bullet.transform.localScale.y * size, bullet.transform.localScale.z * size);
 
                     bullet.GetComponent<ProjectileBehavior>().projectileDamage = damage;
                     bullet.GetComponent<ProjectileBehavior>().projectileRange = range;
                     bullet.GetComponent<ProjectileBehavior>().projectileDamageFallOff = damageFallOff;
+                    bullet.GetComponent<ProjectileBehavior>().projectileEndPoint = rangeEndPoint;
 
                     if (bulletDropOn)
                     {
@@ -101,11 +125,19 @@ public class ShootProjectile : MonoBehaviour
 
     IEnumerator Reload()
     {
-        print("reloading");
+        reloadSlider.maxValue = reloadSpeed;
+        reloadSlider.value = reloadSlider.maxValue;
         isReloading = true;
-        yield return new WaitForSeconds(reloadSpeed);
+        float timeInterval = 0.01f;
+
+        for (float i = 0; i < reloadSpeed; i += timeInterval)
+        {
+            yield return new WaitForSeconds(timeInterval);
+            reloadSlider.value -= timeInterval;
+        }
+
         currentMagazineCount = magazineSize;
         isReloading = false;
-        print("done");
+        
     }
 }
