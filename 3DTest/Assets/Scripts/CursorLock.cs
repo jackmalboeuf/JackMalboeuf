@@ -23,7 +23,7 @@ public class CursorLock : MonoBehaviour
 
     void CheckInput()
     {
-        if (Input.GetButtonDown("Cancel"))
+        if (Input.GetButtonDown("Cancel") || Input.GetButtonDown("Menu"))
         {
             ToggleCursorState();
         }

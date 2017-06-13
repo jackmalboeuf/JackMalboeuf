@@ -72,6 +72,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\ActivateOnButtonPress.cs" />
     <Compile Include="Assets\Scripts\AoEDamage.cs" />
     <Compile Include="Assets\Scripts\CameraMouseLook.cs" />
     <Compile Include="Assets\Scripts\CursorLock.cs" />
@@ -79,6 +80,7 @@
     <Compile Include="Assets\Scripts\DestroyAfterTime.cs" />
     <Compile Include="Assets\Scripts\FaceTowardObject.cs" />
     <Compile Include="Assets\Scripts\PlayerMovement.cs" />
+    <Compile Include="Assets\Scripts\PreventCollisionPassThrough.cs" />
     <Compile Include="Assets\Scripts\ProjectileBehavior.cs" />
     <Compile Include="Assets\Scripts\ShootProjectile.cs" />
   </ItemGroup>
