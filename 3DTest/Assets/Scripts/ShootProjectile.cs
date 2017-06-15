@@ -22,6 +22,8 @@ public class ShootProjectile : MonoBehaviour
     float magazineSize;
     [SerializeField]
     float reloadSpeed;
+    [SerializeField]
+    Slider damageSlider;
     
     public float damage;
     public float range;
@@ -138,6 +140,10 @@ public class ShootProjectile : MonoBehaviour
 
         currentMagazineCount = magazineSize;
         isReloading = false;
-        
+    }
+
+    public void ChangeDamage()
+    {
+        damage = damageSlider.value;
     }
 }
