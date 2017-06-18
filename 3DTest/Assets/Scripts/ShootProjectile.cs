@@ -24,6 +24,8 @@ public class ShootProjectile : MonoBehaviour
     float reloadSpeed;
     [SerializeField]
     Slider damageSlider;
+    [SerializeField]
+    Slider fireRateSlider;
     
     public float damage;
     public float range;
@@ -145,5 +147,10 @@ public class ShootProjectile : MonoBehaviour
     public void ChangeDamage()
     {
         damage = damageSlider.value;
+    }
+
+    public void ChangeFireRate()
+    {
+        fireRate = fireRateSlider.value;
     }
 }
