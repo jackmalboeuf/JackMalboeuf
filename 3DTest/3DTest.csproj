@@ -82,6 +82,7 @@
     <Compile Include="Assets\Scripts\PlayerMovement.cs" />
     <Compile Include="Assets\Scripts\PreventCollisionPassThrough.cs" />
     <Compile Include="Assets\Scripts\ProjectileBehavior.cs" />
+    <Compile Include="Assets\Scripts\SetActiveStateOnStart.cs" />
     <Compile Include="Assets\Scripts\ShootProjectile.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -26,7 +26,21 @@ public class ShootProjectile : MonoBehaviour
     Slider damageSlider;
     [SerializeField]
     Slider fireRateSlider;
-    
+    [SerializeField]
+    Slider accuracySlider;
+    [SerializeField]
+    Slider rangeSlider;
+    [SerializeField]
+    Slider magazineSizeSlider;
+    [SerializeField]
+    Slider reloadSpeedSlider;
+    [SerializeField]
+    Slider projectileVelocitySlider;
+    [SerializeField]
+    Slider projectileWidthSlider;
+    [SerializeField]
+    Slider damageFallOffSlider;
+
     public float damage;
     public float range;
     public float damageFallOff;
@@ -37,6 +51,8 @@ public class ShootProjectile : MonoBehaviour
 
     [HideInInspector]
     public Vector3 rangeEndPoint;
+    [HideInInspector]
+    public bool canFire;
 
     enum gunType { MachineGun = 0, ShotGun = 1, Rifle = 2, LazerGun = 3 }
     float nextFireTime;
@@ -47,6 +63,27 @@ public class ShootProjectile : MonoBehaviour
     {
         isReloading = false;
         currentMagazineCount = magazineSize;
+        canFire = true;
+
+        damageSlider.value = FindHalfwayPoint(damageSlider.minValue, damageSlider.maxValue);
+        fireRateSlider.value = FindHalfwayPoint(fireRateSlider.minValue, fireRateSlider.maxValue);
+        accuracySlider.value = FindHalfwayPoint(accuracySlider.minValue, accuracySlider.maxValue);
+        rangeSlider.value = FindHalfwayPoint(rangeSlider.minValue, rangeSlider.maxValue);
+        magazineSizeSlider.value = FindHalfwayPoint(magazineSizeSlider.minValue, magazineSizeSlider.maxValue);
+        reloadSpeedSlider.value = FindHalfwayPoint(reloadSpeedSlider.minValue, reloadSpeedSlider.maxValue);
+        projectileVelocitySlider.value = FindHalfwayPoint(projectileVelocitySlider.minValue, projectileVelocitySlider.maxValue);
+        projectileWidthSlider.value = FindHalfwayPoint(projectileWidthSlider.minValue, projectileWidthSlider.maxValue);
+        damageFallOffSlider.value = FindHalfwayPoint(damageFallOffSlider.minValue, damageFallOffSlider.maxValue);
+
+        damage = damageSlider.value;
+        fireRate = fireRateSlider.value;
+        accuracy = accuracySlider.value;
+        range = rangeSlider.value;
+        magazineSize = magazineSizeSlider.value;
+        reloadSpeed = reloadSpeedSlider.value;
+        velocity = projectileVelocitySlider.value;
+        size = projectileWidthSlider.value;
+        damageFallOff = damageFallOffSlider.value;
     }
 
     void FixedUpdate()
@@ -58,7 +95,7 @@ public class ShootProjectile : MonoBehaviour
     {
         if (typeOfGun == gunType.MachineGun)
         {
-            if (Input.GetButton("Fire1") && Time.time > nextFireTime && !isReloading)
+            if (Input.GetButton("Fire1") && Time.time > nextFireTime && !isReloading && canFire)
             {
                 if (currentMagazineCount > 0)
                 {
@@ -152,5 +189,45 @@ public class ShootProjectile : MonoBehaviour
     public void ChangeFireRate()
     {
         fireRate = fireRateSlider.value;
+    }
+
+    public void ChangeAccuracy()
+    {
+        accuracy = accuracySlider.value;
+    }
+
+    public void ChangeRange()
+    {
+        range = rangeSlider.value;
+    }
+
+    public void ChangeMagazineSize()
+    {
+        magazineSize = magazineSizeSlider.value;
+    }
+
+    public void ChangeReloadSpeed()
+    {
+        reloadSpeed = reloadSpeedSlider.value;
+    }
+
+    public void ChangeProjectileVelocity()
+    {
+        velocity = projectileVelocitySlider.value;
+    }
+
+    public void ChangeProjectileWidth()
+    {
+        size = projectileWidthSlider.value;
+    }
+
+    public void ChangeDamageFallOff()
+    {
+        damageFallOff = damageFallOffSlider.value;
+    }
+
+    float FindHalfwayPoint(float min, float max)
+    {
+        return (min + max) / 2;
     }
 }

@@ -41,7 +41,7 @@ public class CursorLock : MonoBehaviour
             GetComponent<PlayerMovement>().enabled = true;
             GetComponent<CameraMouseLook>().enabled = true;
             transform.GetChild(0).GetComponent<CameraMouseLook>().enabled = true;
-            projectileSpawn.enabled = true;
+            projectileSpawn.canFire = true;
         }
         else
         {
@@ -50,7 +50,7 @@ public class CursorLock : MonoBehaviour
             GetComponent<PlayerMovement>().enabled = false;
             GetComponent<CameraMouseLook>().enabled = false;
             transform.GetChild(0).GetComponent<CameraMouseLook>().enabled = false;
-            projectileSpawn.enabled = false;
+            projectileSpawn.canFire = false;
         }
     }
 }
