@@ -5,6 +5,9 @@ using System;
 
 public class RotateTile : MonoBehaviour, IPointerClickHandler
 {
+    public bool isCorrect;
+    public TileStateManager tilesStateManager;
+
     float waitTime = 0.01f;
 
     public void OnPointerClick(PointerEventData eventData)
@@ -20,7 +23,6 @@ public class RotateTile : MonoBehaviour, IPointerClickHandler
 
         transform.eulerAngles = new Vector3(0, 0, transform.eulerAngles.z - 30);
         transform.eulerAngles = new Vector3(0, 0, Mathf.Round(transform.eulerAngles.z));
-
         yield return new WaitForSeconds(waitTime);
 
         if (transform.eulerAngles.z >= 300)
@@ -32,7 +34,12 @@ public class RotateTile : MonoBehaviour, IPointerClickHandler
 
         if (transform.eulerAngles.z == 0)
         {
-            print("good " + transform.rotation);
+            isCorrect = true;
+            tilesStateManager.CheckIfTilesAreCorrect();
+        }
+        else
+        {
+            isCorrect = false;
         }
     }
 }
