@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public class SpawnTiles : MonoBehaviour
+public class SpawnTiles : MonoBehaviour, ITileList
 {
     [SerializeField]
     GameObject tilePrefab;
@@ -15,12 +15,18 @@ public class SpawnTiles : MonoBehaviour
     [SerializeField]
     TileStateManager tileStateManager;
 
+    [Space(15)]
+    [Range(1, 16)]
     [SerializeField]
     int numberOfTiles;
     [SerializeField]
     List<Vector2> tilePositions = new List<Vector2>();
     [SerializeField]
     List<tileRotation> tileRotations = new List<tileRotation>();
+    [SerializeField]
+    List<List<tileLines>> tileContents = new List<List<tileLines>>();
+    [SerializeField]
+    List<ListWrapper> tilelist = new List<ListWrapper>();
 
     List<GameObject> tiles = new List<GameObject>();
     GameObject tile1;
@@ -57,9 +63,18 @@ public class SpawnTiles : MonoBehaviour
     Vector3 tile14Rotation;
     Vector3 tile15Rotation;
     Vector3 tile16Rotation;
-
+    enum tileLines { corner, edge, center }
+    List<List<GameObject>> lines = new List<List<GameObject>>();
+    
+    [Header("Tile 1")]
+    public Color za;
+    public GameObject zs;
+    public Vector3 zd;
+    
     void Start()
     {
+        tilelist.Add(new ListWrapper { xa = za, xs = zs, xd = zd });
+
         tiles.Add(tile1);
         tiles.Add(tile2);
         tiles.Add(tile3);
@@ -76,7 +91,7 @@ public class SpawnTiles : MonoBehaviour
         tiles.Add(tile14);
         tiles.Add(tile15);
         tiles.Add(tile16);
-
+        
         rotations.Add(tile1Rotation);
         rotations.Add(tile2Rotation);
         rotations.Add(tile3Rotation);
@@ -111,6 +126,17 @@ public class SpawnTiles : MonoBehaviour
             else if (tileRotations[i] == tileRotation.left)
             {
                 rotations[i] = new Vector3(0, 0, -270);
+            }
+        }
+
+        for (int i = 0; i < tileContents.Count; i++)
+        {
+            for (int g = 0; g < tileContents[i].Count; g++)
+            {
+                if (tileContents[i][g] == tileLines.center)
+                {
+                    lines[i][g] = centerPrefab;
+                }
             }
         }
 
