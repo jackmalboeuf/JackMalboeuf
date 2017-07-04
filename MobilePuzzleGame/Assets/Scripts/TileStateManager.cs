@@ -4,6 +4,9 @@ using System.Collections.Generic;
 
 public class TileStateManager : MonoBehaviour
 {
+    [SerializeField]
+    SlideAway backgroundPanel;
+
     [HideInInspector]
     public List<RotateTile> tiles = new List<RotateTile>();
 
@@ -23,7 +26,7 @@ public class TileStateManager : MonoBehaviour
 
         if (numberOfCorrectTiles == tiles.Count)
         {
-            print("win");
+            StartCoroutine(backgroundPanel.Slide());
         }
     }
 }

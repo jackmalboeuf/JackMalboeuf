@@ -2,10 +2,10 @@
 using System.Collections;
 using UnityEditor;
 
-[CustomEditor(typeof(SpawnTiles))]
+//[CustomEditor(typeof(SpawnTiles))]
 public class TileSpawnEditor : Editor
 {
-    SpawnTiles spawnTiles;
+    /*SpawnTiles spawnTiles;
     bool showTile1;
 
     void OnEnable()
@@ -21,7 +21,7 @@ public class TileSpawnEditor : Editor
 
         if (showTile1)
         {
-            spawnTiles.za = EditorGUILayout.ColorField("za", Color.black);
+            //spawnTiles.za = EditorGUILayout.ColorField("za", Color.black);
         }
-    }
+    }*/
 }
