@@ -498,82 +498,202 @@ public class SpawnTiles : MonoBehaviour, ITileList
         tiles[0] = tile1;
         tiles[1] = tile2;
         tiles[2] = tile3;
+        tiles[3] = tile4;
+        tiles[4] = tile5;
+        tiles[5] = tile6;
+        tiles[6] = tile7;
+        tiles[7] = tile8;
+        tiles[8] = tile9;
 
         line1[0] = tile1Line1;
         line1[1] = tile2Line1;
         line1[2] = tile3Line1;
+        line1[3] = tile4Line1;
+        line1[4] = tile5Line1;
+        line1[5] = tile6Line1;
+        line1[6] = tile7Line1;
+        line1[7] = tile8Line1;
+        line1[8] = tile9Line1;
 
         line2[0] = tile1Line2;
         line2[1] = tile2Line2;
         line2[2] = tile3Line2;
+        line2[3] = tile4Line2;
+        line2[4] = tile5Line2;
+        line2[5] = tile6Line2;
+        line2[6] = tile7Line2;
+        line2[7] = tile8Line2;
+        line2[8] = tile9Line2;
 
         line3[0] = tile1Line3;
         line3[1] = tile2Line3;
         line3[2] = tile3Line3;
+        line3[3] = tile4Line3;
+        line3[4] = tile5Line3;
+        line3[5] = tile6Line3;
+        line3[6] = tile7Line3;
+        line3[7] = tile8Line3;
+        line3[8] = tile9Line3;
 
         line4[0] = tile1Line4;
         line4[1] = tile2Line4;
         line4[2] = tile3Line4;
+        line4[3] = tile4Line4;
+        line4[4] = tile5Line4;
+        line4[5] = tile6Line4;
+        line4[6] = tile7Line4;
+        line4[7] = tile8Line4;
+        line4[8] = tile9Line4;
 
         line1Type[0] = tile1Line1Type;
         line1Type[1] = tile2Line1Type;
         line1Type[2] = tile3Line1Type;
+        line1Type[3] = tile4Line1Type;
+        line1Type[4] = tile5Line1Type;
+        line1Type[5] = tile6Line1Type;
+        line1Type[6] = tile7Line1Type;
+        line1Type[7] = tile8Line1Type;
+        line1Type[8] = tile9Line1Type;
 
         line1Color[0] = tile1Line1Color;
         line1Color[1] = tile2Line1Color;
         line1Color[2] = tile3Line1Color;
+        line1Color[3] = tile4Line1Color;
+        line1Color[4] = tile5Line1Color;
+        line1Color[5] = tile6Line1Color;
+        line1Color[6] = tile7Line1Color;
+        line1Color[7] = tile8Line1Color;
+        line1Color[8] = tile9Line1Color;
 
         line1Rotation[0] = tile1Line1Rotation;
         line1Rotation[1] = tile2Line1Rotation;
         line1Rotation[2] = tile3Line1Rotation;
+        line1Rotation[3] = tile4Line1Rotation;
+        line1Rotation[4] = tile5Line1Rotation;
+        line1Rotation[5] = tile6Line1Rotation;
+        line1Rotation[6] = tile7Line1Rotation;
+        line1Rotation[7] = tile8Line1Rotation;
+        line1Rotation[8] = tile9Line1Rotation;
 
         line2Type[0] = tile1Line2Type;
         line2Type[1] = tile2Line2Type;
         line2Type[2] = tile3Line2Type;
-    
+        line2Type[3] = tile4Line2Type;
+        line2Type[4] = tile5Line2Type;
+        line2Type[5] = tile6Line2Type;
+        line2Type[6] = tile7Line2Type;
+        line2Type[7] = tile8Line2Type;
+        line2Type[8] = tile9Line2Type;
+
         line2Color[0] = tile1Line2Color;
         line2Color[1] = tile2Line2Color;
         line2Color[2] = tile3Line2Color;
-        
+        line2Color[3] = tile4Line2Color;
+        line2Color[4] = tile5Line2Color;
+        line2Color[5] = tile6Line2Color;
+        line2Color[6] = tile7Line2Color;
+        line2Color[7] = tile8Line2Color;
+        line2Color[8] = tile9Line2Color;
+
         line2Rotation[0] = tile1Line2Rotation;
         line2Rotation[1] = tile2Line2Rotation;
         line2Rotation[2] = tile3Line2Rotation;
+        line2Rotation[3] = tile4Line2Rotation;
+        line2Rotation[4] = tile5Line2Rotation;
+        line2Rotation[5] = tile6Line2Rotation;
+        line2Rotation[6] = tile7Line2Rotation;
+        line2Rotation[7] = tile8Line2Rotation;
+        line2Rotation[8] = tile9Line2Rotation;
 
         line3Type[0] = tile1Line3Type;
         line3Type[1] = tile2Line3Type;
         line3Type[2] = tile3Line3Type;
+        line3Type[3] = tile4Line3Type;
+        line3Type[4] = tile5Line3Type;
+        line3Type[5] = tile6Line3Type;
+        line3Type[6] = tile7Line3Type;
+        line3Type[7] = tile8Line3Type;
+        line3Type[8] = tile9Line3Type;
 
         line3Color[0] = tile1Line3Color;
         line3Color[1] = tile2Line3Color;
         line3Color[2] = tile3Line3Color;
+        line3Color[3] = tile4Line3Color;
+        line3Color[4] = tile5Line3Color;
+        line3Color[5] = tile6Line3Color;
+        line3Color[6] = tile7Line3Color;
+        line3Color[7] = tile8Line3Color;
+        line3Color[8] = tile9Line3Color;
 
         line3Rotation[0] = tile1Line3Rotation;
         line3Rotation[1] = tile2Line3Rotation;
         line3Rotation[2] = tile3Line3Rotation;
+        line3Rotation[3] = tile4Line3Rotation;
+        line3Rotation[4] = tile5Line3Rotation;
+        line3Rotation[5] = tile6Line3Rotation;
+        line3Rotation[6] = tile7Line3Rotation;
+        line3Rotation[7] = tile8Line3Rotation;
+        line3Rotation[8] = tile9Line3Rotation;
 
         line4Type[0] = tile1Line4Type;
         line4Type[1] = tile2Line4Type;
         line4Type[2] = tile3Line4Type;
+        line4Type[3] = tile4Line4Type;
+        line4Type[4] = tile5Line4Type;
+        line4Type[5] = tile6Line4Type;
+        line4Type[6] = tile7Line4Type;
+        line4Type[7] = tile8Line4Type;
+        line4Type[8] = tile9Line4Type;
 
         line4Color[0] = tile1Line4Color;
         line4Color[1] = tile2Line4Color;
         line4Color[2] = tile3Line4Color;
+        line4Color[3] = tile4Line4Color;
+        line4Color[4] = tile5Line4Color;
+        line4Color[5] = tile6Line4Color;
+        line4Color[6] = tile7Line4Color;
+        line4Color[7] = tile8Line4Color;
+        line4Color[8] = tile9Line4Color;
 
         line4Rotation[0] = tile1Line4Rotation;
         line4Rotation[1] = tile2Line4Rotation;
         line4Rotation[2] = tile3Line4Rotation;
+        line4Rotation[3] = tile4Line4Rotation;
+        line4Rotation[4] = tile5Line4Rotation;
+        line4Rotation[5] = tile6Line4Rotation;
+        line4Rotation[6] = tile7Line4Rotation;
+        line4Rotation[7] = tile8Line4Rotation;
+        line4Rotation[8] = tile9Line4Rotation;
 
         centerLineColor[0] = tile1CenterLineColor;
         centerLineColor[1] = tile2CenterLineColor;
         centerLineColor[2] = tile3CenterLineColor;
+        centerLineColor[3] = tile4CenterLineColor;
+        centerLineColor[4] = tile5CenterLineColor;
+        centerLineColor[5] = tile6CenterLineColor;
+        centerLineColor[6] = tile7CenterLineColor;
+        centerLineColor[7] = tile8CenterLineColor;
+        centerLineColor[8] = tile9CenterLineColor;
 
         tilePositions[0] = tile1Position;
         tilePositions[1] = tile2Position;
         tilePositions[2] = tile3Position;
+        tilePositions[3] = tile4Position;
+        tilePositions[4] = tile5Position;
+        tilePositions[5] = tile6Position;
+        tilePositions[6] = tile7Position;
+        tilePositions[7] = tile8Position;
+        tilePositions[8] = tile9Position;
 
         tileRotations[0] = tile1Rotation;
         tileRotations[1] = tile2Rotation;
         tileRotations[2] = tile3Rotation;
+        tileRotations[3] = tile4Rotation;
+        tileRotations[4] = tile5Rotation;
+        tileRotations[5] = tile6Rotation;
+        tileRotations[6] = tile7Rotation;
+        tileRotations[7] = tile8Rotation;
+        tileRotations[8] = tile9Rotation;
 
         for (int i = 0; i < numberOfGoals; i++)
         {
@@ -581,6 +701,7 @@ public class SpawnTiles : MonoBehaviour, ITileList
             goals[i].transform.localPosition = goalPositions[i];
             goals[i].GetComponent<Image>().color = goalColors[i];
             goals[i].transform.localEulerAngles = new Vector3(0, 0, goalRotations[i]);
+            goals[i].transform.localScale = new Vector3(1, 1, 1);
         }
 
         for (int i = 0; i < numberOfTiles; i++)
@@ -588,6 +709,7 @@ public class SpawnTiles : MonoBehaviour, ITileList
             tiles[i] = Instantiate(tilePrefab, transform) as GameObject;
             tiles[i].transform.localPosition = tilePositions[i];
             tiles[i].transform.localEulerAngles = new Vector3(0, 0, tileRotations[i]);
+            tiles[i].transform.localScale = new Vector3(1, 1, 1);
             tiles[i].GetComponent<RotateTile>().tilesStateManager = tileStateManager;
             RotateTile rt = tiles[i].GetComponent<RotateTile>();
             tileStateManager.tiles.Add(rt);
@@ -598,6 +720,7 @@ public class SpawnTiles : MonoBehaviour, ITileList
                 line1[i].transform.localPosition = new Vector2(0, 0);
                 line1[i].GetComponent<Image>().color = line1Color[i];
                 line1[i].transform.localEulerAngles = new Vector3(0, 0, line1Rotation[i]);
+                line1[i].transform.localScale = new Vector3(1, 1, 1);
             }
 
             if (line2Type[i] != null)
@@ -606,6 +729,7 @@ public class SpawnTiles : MonoBehaviour, ITileList
                 line2[i].transform.localPosition = new Vector2(0, 0);
                 line2[i].GetComponent<Image>().color = line2Color[i];
                 line2[i].transform.localEulerAngles = new Vector3(0, 0, line2Rotation[i]);
+                line2[i].transform.localScale = new Vector3(1, 1, 1);
             }
 
             if (line3Type[i] != null)
@@ -614,6 +738,7 @@ public class SpawnTiles : MonoBehaviour, ITileList
                 line3[i].transform.localPosition = new Vector2(0, 0);
                 line3[i].GetComponent<Image>().color = line3Color[i];
                 line3[i].transform.localEulerAngles = new Vector3(0, 0, line3Rotation[i]);
+                line3[i].transform.localScale = new Vector3(1, 1, 1);
             }
 
             if (line4Type[i] != null)
@@ -622,11 +747,13 @@ public class SpawnTiles : MonoBehaviour, ITileList
                 line4[i].transform.localPosition = new Vector2(0, 0);
                 line4[i].GetComponent<Image>().color = line4Color[i];
                 line4[i].transform.localEulerAngles = new Vector3(0, 0, line4Rotation[i]);
+                line4[i].transform.localScale = new Vector3(1, 1, 1);
             }
 
             centerLine[i] = Instantiate(centerPrefab, tiles[i].transform) as GameObject;
             centerLine[i].transform.localPosition = new Vector2(0, 0);
             centerLine[i].GetComponent<Image>().color = centerLineColor[i];
+            centerLine[i].transform.localScale = new Vector3(1, 1, 1);
         }
     }
 }

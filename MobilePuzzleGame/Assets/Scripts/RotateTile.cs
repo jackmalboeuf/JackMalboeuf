@@ -9,6 +9,7 @@ public class RotateTile : MonoBehaviour, IPointerClickHandler
     public TileStateManager tilesStateManager;
 
     float waitTime = 0.01f;
+    bool canRotate = true;
 
     public void OnPointerClick(PointerEventData eventData)
     {
@@ -17,29 +18,36 @@ public class RotateTile : MonoBehaviour, IPointerClickHandler
 
     IEnumerator RotateAnimation()
     {
-        transform.eulerAngles = new Vector3(0, 0, transform.eulerAngles.z - 45);
-        transform.eulerAngles = new Vector3(0, 0, Mathf.Round(transform.eulerAngles.z));
-        yield return new WaitForSeconds(waitTime);
-
-        transform.eulerAngles = new Vector3(0, 0, transform.eulerAngles.z - 30);
-        transform.eulerAngles = new Vector3(0, 0, Mathf.Round(transform.eulerAngles.z));
-        yield return new WaitForSeconds(waitTime);
-
-        if (transform.eulerAngles.z >= 300)
-            transform.rotation = Quaternion.identity;
-        else
-            transform.eulerAngles = new Vector3(0, 0, transform.eulerAngles.z - 15);
-
-        transform.eulerAngles = new Vector3(0, 0, Mathf.Round(transform.eulerAngles.z));
-
-        if (transform.eulerAngles.z == 0)
+        if (canRotate)
         {
-            isCorrect = true;
-            tilesStateManager.CheckIfTilesAreCorrect();
-        }
-        else
-        {
-            isCorrect = false;
+            canRotate = false;
+
+            transform.eulerAngles = new Vector3(0, 0, transform.eulerAngles.z - 45);
+            transform.eulerAngles = new Vector3(0, 0, Mathf.Round(transform.eulerAngles.z));
+            yield return new WaitForSeconds(waitTime);
+
+            transform.eulerAngles = new Vector3(0, 0, transform.eulerAngles.z - 30);
+            transform.eulerAngles = new Vector3(0, 0, Mathf.Round(transform.eulerAngles.z));
+            yield return new WaitForSeconds(waitTime);
+
+            if (transform.eulerAngles.z >= 300)
+                transform.rotation = Quaternion.identity;
+            else
+                transform.eulerAngles = new Vector3(0, 0, transform.eulerAngles.z - 15);
+
+            transform.eulerAngles = new Vector3(0, 0, Mathf.Round(transform.eulerAngles.z));
+
+            if (transform.eulerAngles.z == 0)
+            {
+                isCorrect = true;
+                tilesStateManager.CheckIfTilesAreCorrect();
+            }
+            else
+            {
+                isCorrect = false;
+            }
+
+            canRotate = true;
         }
     }
 }
