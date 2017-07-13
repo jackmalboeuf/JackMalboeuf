@@ -4,15 +4,22 @@ using System.Collections;
 public class SlideAway : MonoBehaviour
 {
     [SerializeField]
-    Vector3 slideDirection;
+    Transform slideMarker;
+    [SerializeField]
+    Transform backgroundSlideMarker;
+    [SerializeField]
+    int slideFrames = 12;
 
     public IEnumerator Slide()
     {
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(0.3f);
 
-        while (Vector3.Distance(transform.position, new Vector3(0, 0, 0)) < 5000)
+        float travelDistance = Vector2.Distance(backgroundSlideMarker.position, slideMarker.position);
+        float travelAmount = travelDistance / slideFrames;
+
+        for (int i = 0; i < slideFrames; i++)
         {
-            transform.position += slideDirection;
+            transform.position += new Vector3(travelAmount, 0, 0);
             yield return new WaitForSeconds(0.01f);
         }
     }

@@ -11,6 +11,14 @@ public class RotateTile : MonoBehaviour, IPointerClickHandler
     float waitTime = 0.01f;
     bool canRotate = true;
 
+    void Start()
+    {
+        if (transform.eulerAngles.z == 0)
+            isCorrect = true;
+        else
+            isCorrect = false;
+    }
+
     public void OnPointerClick(PointerEventData eventData)
     {
         StartCoroutine(RotateAnimation());

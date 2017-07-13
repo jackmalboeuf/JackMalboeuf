@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
 
-public class SpawnTiles : MonoBehaviour, ITileList
+public class SpawnTiles : MonoBehaviour
 {
     [SerializeField]
     TileStateManager tileStateManager;
@@ -702,6 +702,7 @@ public class SpawnTiles : MonoBehaviour, ITileList
             goals[i].GetComponent<Image>().color = goalColors[i];
             goals[i].transform.localEulerAngles = new Vector3(0, 0, goalRotations[i]);
             goals[i].transform.localScale = new Vector3(1, 1, 1);
+            tileStateManager.coloredGoals.Add(goals[i].GetComponent<Image>());
         }
 
         for (int i = 0; i < numberOfTiles; i++)
