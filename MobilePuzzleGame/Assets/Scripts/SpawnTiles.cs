@@ -5,14 +5,11 @@ using UnityEngine.UI;
 
 public class SpawnTiles : MonoBehaviour
 {
-    [SerializeField]
-    TileStateManager tileStateManager;
-    [Space(15)]
     [Range(1, 9)]
     [SerializeField]
     int numberOfTiles;
     [Space(15)]
-    [Range(2, 4)]
+    [Range(2, 6)]
     [SerializeField]
     int numberOfGoals;
 
@@ -56,6 +53,26 @@ public class SpawnTiles : MonoBehaviour
     [SerializeField]
     float goal4Rotation;
 
+    [Header("Goal 5")]
+    [SerializeField]
+    GameObject goal5Type;
+    [SerializeField]
+    Color goal5Color;
+    [SerializeField]
+    Vector2 goal5Position;
+    [SerializeField]
+    float goal5Rotation;
+
+    [Header("Goal 6")]
+    [SerializeField]
+    GameObject goal6Type;
+    [SerializeField]
+    Color goal6Color;
+    [SerializeField]
+    Vector2 goal6Position;
+    [SerializeField]
+    float goal6Rotation;
+
     [Header("Tile 1")]
     [SerializeField]
     GameObject tile1Line1Type;
@@ -84,6 +101,7 @@ public class SpawnTiles : MonoBehaviour
     Color tile1Line4Color;
     [SerializeField]
     float tile1Line4Rotation;
+    [Space(10)]
     [SerializeField]
     Color tile1CenterLineColor;
     [Space(10)]
@@ -120,6 +138,7 @@ public class SpawnTiles : MonoBehaviour
     Color tile2Line4Color;
     [SerializeField]
     float tile2Line4Rotation;
+    [Space(10)]
     [SerializeField]
     Color tile2CenterLineColor;
     [Space(10)]
@@ -156,6 +175,7 @@ public class SpawnTiles : MonoBehaviour
     Color tile3Line4Color;
     [SerializeField]
     float tile3Line4Rotation;
+    [Space(10)]
     [SerializeField]
     Color tile3CenterLineColor;
     [Space(10)]
@@ -192,6 +212,7 @@ public class SpawnTiles : MonoBehaviour
     Color tile4Line4Color;
     [SerializeField]
     float tile4Line4Rotation;
+    [Space(10)]
     [SerializeField]
     Color tile4CenterLineColor;
     [Space(10)]
@@ -228,6 +249,7 @@ public class SpawnTiles : MonoBehaviour
     Color tile5Line4Color;
     [SerializeField]
     float tile5Line4Rotation;
+    [Space(10)]
     [SerializeField]
     Color tile5CenterLineColor;
     [Space(10)]
@@ -264,6 +286,7 @@ public class SpawnTiles : MonoBehaviour
     Color tile6Line4Color;
     [SerializeField]
     float tile6Line4Rotation;
+    [Space(10)]
     [SerializeField]
     Color tile6CenterLineColor;
     [Space(10)]
@@ -300,6 +323,7 @@ public class SpawnTiles : MonoBehaviour
     Color tile7Line4Color;
     [SerializeField]
     float tile7Line4Rotation;
+    [Space(10)]
     [SerializeField]
     Color tile7CenterLineColor;
     [Space(10)]
@@ -336,6 +360,7 @@ public class SpawnTiles : MonoBehaviour
     Color tile8Line4Color;
     [SerializeField]
     float tile8Line4Rotation;
+    [Space(10)]
     [SerializeField]
     Color tile8CenterLineColor;
     [Space(10)]
@@ -372,6 +397,7 @@ public class SpawnTiles : MonoBehaviour
     Color tile9Line4Color;
     [SerializeField]
     float tile9Line4Rotation;
+    [Space(10)]
     [SerializeField]
     Color tile9CenterLineColor;
     [Space(10)]
@@ -380,11 +406,11 @@ public class SpawnTiles : MonoBehaviour
     [SerializeField]
     float tile9Rotation;
 
-    GameObject[] goals = new GameObject[4];
-    GameObject[] goalTypes = new GameObject[4];
-    Color[] goalColors = new Color[4];
-    Vector2[] goalPositions = new Vector2[4];
-    float[] goalRotations = new float[4];
+    GameObject[] goals = new GameObject[6];
+    GameObject[] goalTypes = new GameObject[6];
+    Color[] goalColors = new Color[6];
+    Vector2[] goalPositions = new Vector2[6];
+    float[] goalRotations = new float[6];
 
     GameObject[] tiles = new GameObject[9];
     GameObject[] line1 = new GameObject[9];
@@ -412,6 +438,8 @@ public class SpawnTiles : MonoBehaviour
     GameObject goal2;
     GameObject goal3;
     GameObject goal4;
+    GameObject goal5;
+    GameObject goal6;
 
     GameObject tilePrefab;
     GameObject edgePrefab;
@@ -474,26 +502,36 @@ public class SpawnTiles : MonoBehaviour
         goals[1] = goal2;
         goals[2] = goal3;
         goals[3] = goal4;
+        goals[4] = goal5;
+        goals[5] = goal6;
 
         goalTypes[0] = goal1Type;
         goalTypes[1] = goal2Type;
         goalTypes[2] = goal3Type;
         goalTypes[3] = goal4Type;
+        goalTypes[4] = goal5Type;
+        goalTypes[5] = goal6Type;
 
         goalColors[0] = goal1Color;
         goalColors[1] = goal2Color;
         goalColors[2] = goal3Color;
         goalColors[3] = goal4Color;
+        goalColors[4] = goal5Color;
+        goalColors[5] = goal6Color;
 
         goalPositions[0] = goal1Position;
         goalPositions[1] = goal2Position;
         goalPositions[2] = goal3Position;
         goalPositions[3] = goal4Position;
+        goalPositions[4] = goal5Position;
+        goalPositions[5] = goal6Position;
 
         goalRotations[0] = goal1Rotation;
         goalRotations[1] = goal2Rotation;
         goalRotations[2] = goal3Rotation;
         goalRotations[3] = goal4Rotation;
+        goalRotations[4] = goal5Rotation;
+        goalRotations[5] = goal6Rotation;
 
         tiles[0] = tile1;
         tiles[1] = tile2;
@@ -702,7 +740,7 @@ public class SpawnTiles : MonoBehaviour
             goals[i].GetComponent<Image>().color = goalColors[i];
             goals[i].transform.localEulerAngles = new Vector3(0, 0, goalRotations[i]);
             goals[i].transform.localScale = new Vector3(1, 1, 1);
-            tileStateManager.coloredGoals.Add(goals[i].GetComponent<Image>());
+            GetComponent<TileStateManager>().coloredGoals.Add(goals[i].GetComponent<Image>());
         }
 
         for (int i = 0; i < numberOfTiles; i++)
@@ -711,9 +749,9 @@ public class SpawnTiles : MonoBehaviour
             tiles[i].transform.localPosition = tilePositions[i];
             tiles[i].transform.localEulerAngles = new Vector3(0, 0, tileRotations[i]);
             tiles[i].transform.localScale = new Vector3(1, 1, 1);
-            tiles[i].GetComponent<RotateTile>().tilesStateManager = tileStateManager;
+            tiles[i].GetComponent<RotateTile>().tilesStateManager = GetComponent<TileStateManager>();
             RotateTile rt = tiles[i].GetComponent<RotateTile>();
-            tileStateManager.tiles.Add(rt);
+            GetComponent<TileStateManager>().tiles.Add(rt);
 
             if (line1Type[i] != null)
             {

@@ -5,9 +5,6 @@ using UnityEngine.UI;
 
 public class TileStateManager : MonoBehaviour
 {
-    [SerializeField]
-    SlideAway backgroundPanel;
-
     [HideInInspector]
     public List<RotateTile> tiles = new List<RotateTile>();
     [HideInInspector]
@@ -39,7 +36,7 @@ public class TileStateManager : MonoBehaviour
         return Mathf.Abs(startValue - endValue) / 10;
     }
 
-    IEnumerator FadeColor(int increment, int upOrDown)
+    void FadeColor(int upOrDown)
     {
         float newRValue = 0;
         float newGValue = 0;
@@ -47,67 +44,71 @@ public class TileStateManager : MonoBehaviour
 
         for (int i = 0; i < coloredLines.Count; i++)
         {
-            if (coloredLines[i].color == new Color32(0, 110, 240, 255))
+            newRValue = 0;
+            newGValue = 0;
+            newBValue = 0;
+
+            Color32 lineColor = coloredLines[i].color;
+
+            if (lineColor.r != 240 && lineColor.g != 240 && lineColor.b == 240)
             {
-                print("Asd");
                 newRValue = 0.072f;
                 newGValue = 0.04f;
                 newBValue = 0;
             }
-            else if (coloredLines[i].color == new Color32(0, 240, 110, 255))
+            else if (lineColor.r != 240 && lineColor.g == 240 && lineColor.b != 240)
             {
                 newRValue = 0.072f;
                 newGValue = 0;
                 newBValue = 0.04f;
             }
-            else if (coloredLines[i].color == new Color32(240, 0, 110, 255))
+            else if (lineColor.r == 240 && lineColor.g != 240 && lineColor.b != 240)
             {
                 newRValue = 0;
                 newGValue = 0.072f;
                 newBValue = 0.04f;
             }
+
+            coloredLines[i].color = new Color(coloredLines[i].color.r + newRValue * upOrDown, coloredLines[i].color.g + newGValue * upOrDown, coloredLines[i].color.b + newBValue * upOrDown);
         }
 
-        for (int i = 0; i < increment; i++)
+        for (int h = 0; h < coloredGoals.Count; h++)
         {
-            for (int g = 0; g < coloredLines.Count; g++)
-            {
-                
-                
-                coloredLines[g].color = new Color(coloredLines[g].color.r + newRValue * upOrDown, coloredLines[g].color.g + newGValue * upOrDown, coloredLines[g].color.b + newBValue * upOrDown);
-            }
+            newRValue = 0;
+            newGValue = 0;
+            newBValue = 0;
 
-            for (int h = 0; h < coloredGoals.Count; h++)
+            Color32 goalColor = coloredGoals[h].color;
+
+            if (goalColor.r != 240 && goalColor.g != 240 && goalColor.b == 240)
+            {
+                newRValue = 0.072f;
+                newGValue = 0.04f;
+                newBValue = 0;
+            }
+            else if (goalColor.r != 240 && goalColor.g == 240 && goalColor.b != 240)
+            {
+                newRValue = 0.072f;
+                newGValue = 0;
+                newBValue = 0.04f;
+            }
+            else if (goalColor.r == 240 && goalColor.g != 240 && goalColor.b != 240)
             {
                 newRValue = 0;
-                newGValue = 0;
-                newBValue = 0;
-
-                if (coloredGoals[h].color == new Color(0, 0.431f, 0.941f))
-                {
-                    newRValue = 0.072f;
-                    newGValue = 0.04f;
-                    newBValue = 0;
-                }
-                else if (coloredGoals[h].color == new Color(0, 0.941f, 0.431f))
-                {
-                    newRValue = 0.072f;
-                    newGValue = 0;
-                    newBValue = 0.04f;
-                }
-                else if (coloredGoals[h].color == new Color(0.941f, 0, 0.431f))
-                {
-                    newRValue = 0;
-                    newGValue = 0.072f;
-                    newBValue = 0.04f;
-                }
-
-                coloredGoals[h].color = new Color(coloredGoals[h].color.r + newRValue * upOrDown, coloredGoals[h].color.g + newGValue * upOrDown, coloredGoals[h].color.b + newBValue * upOrDown);
+                newGValue = 0.072f;
+                newBValue = 0.04f;
             }
 
-            yield return new WaitForSeconds(0.01f);
+            coloredGoals[h].color = new Color(coloredGoals[h].color.r + newRValue * upOrDown, coloredGoals[h].color.g + newGValue * upOrDown, coloredGoals[h].color.b + newBValue * upOrDown);
         }
     }
+
+    /*for (int j = 0; j < tiles.Count; j++)
+            {
+                tiles[j].GetComponent<Image>().color = new Color(tiles[j].GetComponent<Image>().color.r - 0.03f, tiles[j].GetComponent<Image>().color.g - 0, tiles[j].GetComponent<Image>().color.b - 0);
+            }
+
+            backgroundPanel.GetComponent<Image>().color = new Color(backgroundPanel.GetComponent<Image>().color.r - 0.03f, backgroundPanel.GetComponent<Image>().color.g - 0, backgroundPanel.GetComponent<Image>().color.b - 0);*/
 
     IEnumerator TilesAllCorrect()
     {
@@ -121,111 +122,34 @@ public class TileStateManager : MonoBehaviour
 
         yield return new WaitForSeconds(0.2f);
 
-        StartCoroutine(FadeColor(10, 1));
-        StartCoroutine(FadeColor(4, -1));
-        StartCoroutine(FadeColor(4, 1));
-        StartCoroutine(FadeColor(10, -1));
-
-        /*for (int i = 0; i < 10; i++)
+        for (int i = 0; i < 10; i++)
         {
-            for (int g = 0; g < coloredLines.Count; g++)
-            {
-                print(coloredLines[g].color);
-                coloredLines[g].color = new Color(coloredLines[g].color.r + 0.072f, coloredLines[g].color.g + 0.04f, coloredLines[g].color.b + 0f);
-            }
-
-            for (int h = 0; h < coloredGoals.Count; h++)
-            {
-                coloredGoals[h].color = new Color(coloredGoals[h].color.r + 0.072f, coloredGoals[h].color.g + 0.04f, coloredGoals[h].color.b + 0f);
-            }
-
-            
-
-            for (int j = 0; j < tiles.Count; j++)
-            {
-                tiles[j].GetComponent<Image>().color = new Color(tiles[j].GetComponent<Image>().color.r - 0.03f, tiles[j].GetComponent<Image>().color.g - 0, tiles[j].GetComponent<Image>().color.b - 0);
-            }
-
-            //backgroundPanel.GetComponent<Image>().color = new Color(backgroundPanel.GetComponent<Image>().color.r - 0.03f, backgroundPanel.GetComponent<Image>().color.g - 0, backgroundPanel.GetComponent<Image>().color.b - 0);
-
-            yield return new WaitForSeconds(0.01f);
-        }*/
-
-        /*for (int i = 0; i < 4; i++)
-        {
-            for (int g = 0; g < coloredLines.Count; g++)
-            {
-                coloredLines[g].color = new Color(coloredLines[g].color.r - 0.072f, coloredLines[g].color.g - 0.04f, coloredLines[g].color.b + 0f);
-            }
-
-            for (int h = 0; h < coloredGoals.Count; h++)
-            {
-                coloredGoals[h].color = new Color(coloredGoals[h].color.r - 0.072f, coloredGoals[h].color.g - 0.04f, coloredGoals[h].color.b + 0f);
-            }
+            FadeColor(1);
 
             yield return new WaitForSeconds(0.01f);
         }
 
         for (int i = 0; i < 4; i++)
         {
-            for (int g = 0; g < coloredLines.Count; g++)
-            {
-                coloredLines[g].color = new Color(coloredLines[g].color.r + 0.072f, coloredLines[g].color.g + 0.04f, coloredLines[g].color.b + 0f);
-            }
-
-            for (int h = 0; h < coloredGoals.Count; h++)
-            {
-                coloredGoals[h].color = new Color(coloredGoals[h].color.r + 0.072f, coloredGoals[h].color.g + 0.04f, coloredGoals[h].color.b + 0f);
-            }
-
-            yield return new WaitForSeconds(0.01f);
-        }*/
-
-        /*for (int i = 0; i < 4; i++)
-        {
-            for (int g = 0; g < coloredLines.Count; g++)
-            {
-                coloredLines[g].color = new Color(coloredLines[g].color.r - 0.072f, coloredLines[g].color.g - 0.04f, coloredLines[g].color.b + 0f);
-            }
-
-            for (int h = 0; h < coloredGoals.Count; h++)
-            {
-                coloredGoals[h].color = new Color(coloredGoals[h].color.r - 0.072f, coloredGoals[h].color.g - 0.04f, coloredGoals[h].color.b + 0f);
-            }
+            FadeColor(-1);
 
             yield return new WaitForSeconds(0.01f);
         }
 
         for (int i = 0; i < 4; i++)
         {
-            for (int g = 0; g < coloredLines.Count; g++)
-            {
-                coloredLines[g].color = new Color(coloredLines[g].color.r + 0.072f, coloredLines[g].color.g + 0.04f, coloredLines[g].color.b + 0f);
-            }
-
-            for (int h = 0; h < coloredGoals.Count; h++)
-            {
-                coloredGoals[h].color = new Color(coloredGoals[h].color.r + 0.072f, coloredGoals[h].color.g + 0.04f, coloredGoals[h].color.b + 0f);
-            }
+            FadeColor(1);
 
             yield return new WaitForSeconds(0.01f);
-        }*/
+        }
 
-        /*for (int i = 0; i < 10; i++)
+        for (int i = 0; i < 10; i++)
         {
-            for (int g = 0; g < coloredLines.Count; g++)
-            {
-                coloredLines[g].color = new Color(coloredLines[g].color.r - 0.072f, coloredLines[g].color.g - 0.04f, coloredLines[g].color.b + 0f);
-            }
-
-            for (int h = 0; h < coloredGoals.Count; h++)
-            {
-                coloredGoals[h].color = new Color(coloredGoals[h].color.r - 0.072f, coloredGoals[h].color.g - 0.04f, coloredGoals[h].color.b + 0f);
-            }
+            FadeColor(-1);
 
             yield return new WaitForSeconds(0.01f);
-        }*/
+        }
 
-        //StartCoroutine(backgroundPanel.Slide());
+        StartCoroutine(GetComponent<SlideAway>().Slide());
     }
 }
