@@ -6,22 +6,31 @@ public class FadeIn : MonoBehaviour
 {
     [SerializeField]
     float fadeAmount;
+    [Range(0, 1)]
+    [SerializeField]
+    float startAmount;
 
-    Image image;
+    Image fadeImage;
 
     void Start()
     {
-        image = GetComponent<Image>();
-        StartCoroutine(Fade());
+        fadeImage = GetComponent<Image>();
     }
 
-    IEnumerator Fade()
+    public IEnumerator Fade()
     {
-        image.color = new Color(image.color.r, image.color.g, image.color.b, 0);
+        fadeImage = GetComponent<Image>();
+        fadeImage.color = new Color(fadeImage.color.r, fadeImage.color.g, fadeImage.color.b, startAmount);
 
-        while (image.color.a != 1)
+        int endFade = 0;
+        if (startAmount == 1)
+            endFade = 0;
+        else if (startAmount == 0)
+            endFade = 1;
+
+        while (fadeImage.color.a != endFade)
         {
-            image.color = new Color(image.color.r, image.color.g, image.color.b, image.color.a + fadeAmount);
+            fadeImage.color = new Color(fadeImage.color.r, fadeImage.color.g, fadeImage.color.b, fadeImage.color.a + fadeAmount);
             yield return new WaitForSeconds(0.01f);
         }
     }

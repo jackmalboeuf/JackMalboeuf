@@ -75,6 +75,7 @@
     <Compile Include="Assets\Scripts\FadeIn.cs" />
     <Compile Include="Assets\Scripts\ITileList.cs" />
     <Compile Include="Assets\Scripts\ListWrapper.cs" />
+    <Compile Include="Assets\Scripts\MenuTile.cs" />
     <Compile Include="Assets\Scripts\RotateTile.cs" />
     <Compile Include="Assets\Scripts\SlideAway.cs" />
     <Compile Include="Assets\Scripts\SpawnTiles.cs" />

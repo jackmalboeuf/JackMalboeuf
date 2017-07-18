@@ -8,6 +8,8 @@ public class SlideAway : MonoBehaviour
     [SerializeField]
     Transform backgroundSlideMarker;
     [SerializeField]
+    FadeIn fadeImage;
+    [SerializeField]
     int slideFrames = 12;
 
     public IEnumerator Slide()
@@ -21,6 +23,14 @@ public class SlideAway : MonoBehaviour
         {
             transform.position += new Vector3(travelAmount, 0, 0);
             yield return new WaitForSeconds(0.01f);
+        }
+
+        yield return new WaitForSeconds(0.3f);
+
+        if (fadeImage != null)
+        {
+            fadeImage.gameObject.SetActive(true);
+            StartCoroutine(fadeImage.Fade());
         }
     }
 }
