@@ -11,6 +11,8 @@ public class SlideAway : MonoBehaviour
     FadeIn fadeImage;
     [SerializeField]
     int slideFrames = 12;
+    [SerializeField]
+    string sceneToLoad;
 
     public IEnumerator Slide()
     {
@@ -25,11 +27,14 @@ public class SlideAway : MonoBehaviour
             yield return new WaitForSeconds(0.01f);
         }
 
-        yield return new WaitForSeconds(0.3f);
+        transform.SetAsFirstSibling();
 
         if (fadeImage != null)
         {
+            yield return new WaitForSeconds(0.3f);
+
             fadeImage.gameObject.SetActive(true);
+            fadeImage.nextScene = sceneToLoad;
             StartCoroutine(fadeImage.Fade());
         }
     }

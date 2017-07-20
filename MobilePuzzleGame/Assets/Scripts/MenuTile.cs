@@ -48,7 +48,15 @@ public class MenuTile : MonoBehaviour, IPointerClickHandler
             if (transform.eulerAngles.z == 0)
             {
                 isCorrect = true;
-                StartCoroutine(slidePanel.Slide());
+
+                if (GetComponent<MenuButton>())
+                {
+                    GetComponent<MenuButton>().SlideToNextPanel();
+                }
+
+                yield return new WaitForSeconds(0.7f);
+
+                transform.eulerAngles = new Vector3(0, 0, -270);
             }
             else
             {

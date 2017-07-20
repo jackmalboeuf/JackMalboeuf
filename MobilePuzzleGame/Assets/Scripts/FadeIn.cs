@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class FadeIn : MonoBehaviour
 {
@@ -9,6 +10,8 @@ public class FadeIn : MonoBehaviour
     [Range(0, 1)]
     [SerializeField]
     float startAmount;
+
+    public string nextScene;
 
     Image fadeImage;
 
@@ -32,6 +35,16 @@ public class FadeIn : MonoBehaviour
         {
             fadeImage.color = new Color(fadeImage.color.r, fadeImage.color.g, fadeImage.color.b, fadeImage.color.a + fadeAmount);
             yield return new WaitForSeconds(0.01f);
+
+            if (endFade == 0 && fadeImage.color.a < 0)
+                break;
+            else if (endFade == 1 && fadeImage.color.a > 1)
+                break;
+        }
+
+        if (nextScene != null)
+        {
+            SceneManager.LoadScene(nextScene);
         }
     }
 }
