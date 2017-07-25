@@ -114,6 +114,11 @@ public class TileStateManager : MonoBehaviour
     {
         for (int i = 0; i < tiles.Count; i++)
         {
+            tiles[i].GetComponent<RotateTile>().enabled = false;
+        }
+
+        for (int i = 0; i < tiles.Count; i++)
+        {
             for (int g = 0; g < tiles[i].transform.childCount; g++)
             {
                 coloredLines.Add(tiles[i].transform.GetChild(g).GetComponent<Image>());

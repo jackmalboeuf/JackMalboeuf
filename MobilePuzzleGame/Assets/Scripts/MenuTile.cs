@@ -30,18 +30,17 @@ public class MenuTile : MonoBehaviour, IPointerClickHandler
         {
             canRotate = false;
 
-            transform.eulerAngles = new Vector3(0, 0, transform.eulerAngles.z - 45);
-            transform.eulerAngles = new Vector3(0, 0, Mathf.Round(transform.eulerAngles.z));
-            yield return new WaitForSeconds(waitTime);
-
-            transform.eulerAngles = new Vector3(0, 0, transform.eulerAngles.z - 30);
-            transform.eulerAngles = new Vector3(0, 0, Mathf.Round(transform.eulerAngles.z));
-            yield return new WaitForSeconds(waitTime);
+            for (int i = 0; i < 4; i++)
+            {
+                transform.eulerAngles = new Vector3(0, 0, transform.eulerAngles.z - 18);
+                transform.eulerAngles = new Vector3(0, 0, Mathf.Round(transform.eulerAngles.z));
+                yield return new WaitForSeconds(waitTime);
+            }
 
             if (transform.eulerAngles.z >= 300)
                 transform.rotation = Quaternion.identity;
             else
-                transform.eulerAngles = new Vector3(0, 0, transform.eulerAngles.z - 15);
+                transform.eulerAngles = new Vector3(0, 0, transform.eulerAngles.z - 18);
 
             transform.eulerAngles = new Vector3(0, 0, Mathf.Round(transform.eulerAngles.z));
 

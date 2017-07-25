@@ -5,23 +5,32 @@ using UnityEngine.SceneManagement;
 
 public class FadeIn : MonoBehaviour
 {
-    [SerializeField]
+    /*[SerializeField]
     float fadeAmount;
     [Range(0, 1)]
     [SerializeField]
-    float startAmount;
+    float startAmount;*/
 
+    [HideInInspector]
     public string nextScene;
 
     Image fadeImage;
+    float fadeAmount;
+    float startAmount;
 
     void Start()
     {
         fadeImage = GetComponent<Image>();
+
+        gameObject.SetActive(true);
+        StartCoroutine(Fade(-0.08f, 1));
     }
 
-    public IEnumerator Fade()
+    public IEnumerator Fade(float fadeAmountValue, float startAmountValue)
     {
+        fadeAmount = fadeAmountValue;
+        startAmount = startAmountValue;
+
         fadeImage = GetComponent<Image>();
         fadeImage.color = new Color(fadeImage.color.r, fadeImage.color.g, fadeImage.color.b, startAmount);
 
@@ -41,10 +50,15 @@ public class FadeIn : MonoBehaviour
             else if (endFade == 1 && fadeImage.color.a > 1)
                 break;
         }
-
-        if (nextScene != null)
+        
+        if (!string.IsNullOrEmpty(nextScene))
         {
             SceneManager.LoadScene(nextScene);
         }
+        else
+        {
+            gameObject.SetActive(false);
+        }
+
     }
 }

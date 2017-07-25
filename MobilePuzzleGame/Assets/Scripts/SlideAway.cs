@@ -35,7 +35,7 @@ public class SlideAway : MonoBehaviour
 
             fadeImage.gameObject.SetActive(true);
             fadeImage.nextScene = sceneToLoad;
-            StartCoroutine(fadeImage.Fade());
+            StartCoroutine(fadeImage.Fade(0.03f, 0));
         }
     }
 }
