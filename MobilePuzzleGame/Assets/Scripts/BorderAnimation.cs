@@ -13,10 +13,10 @@ public class BorderAnimation : MonoBehaviour
 
     void Update()
     {
-        if (isRunning == false && Input.GetKeyDown(KeyCode.A))
+        /*if (isRunning == false && Input.GetKeyDown(KeyCode.A))
         {
             StartCoroutine(Fill());
-        }
+        }*/
     }
 
     IEnumerator Fill()

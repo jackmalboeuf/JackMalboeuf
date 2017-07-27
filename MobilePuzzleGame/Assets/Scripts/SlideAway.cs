@@ -13,6 +13,10 @@ public class SlideAway : MonoBehaviour
     int slideFrames = 12;
     [SerializeField]
     string sceneToLoad;
+    [SerializeField]
+    ResultsFade resultsTexts;
+    [SerializeField]
+    TileStateManager nextStage;
 
     public IEnumerator Slide()
     {
@@ -29,6 +33,11 @@ public class SlideAway : MonoBehaviour
 
         transform.SetAsFirstSibling();
 
+        if (nextStage != null)
+        {
+            nextStage.timerIsOn = true;
+        }
+
         if (fadeImage != null)
         {
             yield return new WaitForSeconds(0.3f);
@@ -36,6 +45,12 @@ public class SlideAway : MonoBehaviour
             fadeImage.gameObject.SetActive(true);
             fadeImage.nextScene = sceneToLoad;
             StartCoroutine(fadeImage.Fade(0.03f, 0));
+        }
+
+        if (resultsTexts != null)
+        {
+            StartCoroutine(resultsTexts.FadeTexts1());
+            StartCoroutine(resultsTexts.FadeTexts2());
         }
     }
 }

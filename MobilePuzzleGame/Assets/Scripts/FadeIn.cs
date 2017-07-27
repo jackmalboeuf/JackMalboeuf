@@ -5,11 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class FadeIn : MonoBehaviour
 {
-    /*[SerializeField]
-    float fadeAmount;
-    [Range(0, 1)]
     [SerializeField]
-    float startAmount;*/
+    TileStateManager stage1;
 
     [HideInInspector]
     public string nextScene;
@@ -58,7 +55,11 @@ public class FadeIn : MonoBehaviour
         else
         {
             gameObject.SetActive(false);
+            
+            if (stage1 != null)
+            {
+                stage1.timerIsOn = true;
+            }
         }
-
     }
 }

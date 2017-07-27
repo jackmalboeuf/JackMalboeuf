@@ -5,13 +5,32 @@ using UnityEngine.UI;
 
 public class TileStateManager : MonoBehaviour
 {
+    [SerializeField]
+    Text timeText;
+    [SerializeField]
+    Text turnsText;
+
     [HideInInspector]
     public List<RotateTile> tiles = new List<RotateTile>();
     [HideInInspector]
     public List<Image> coloredGoals = new List<Image>();
+    [HideInInspector]
+    public float timePassed = 0;
+    [HideInInspector]
+    public int numberOfTurns = 0;
+    [HideInInspector]
+    public bool timerIsOn = false;
 
     List<Image> coloredLines = new List<Image>();
     int numberOfCorrectTiles;
+
+    void Update()
+    {
+        if (timerIsOn)
+        {
+            timePassed += Time.deltaTime;
+        }
+    }
 
     public void CheckIfTilesAreCorrect()
     {
@@ -28,12 +47,10 @@ public class TileStateManager : MonoBehaviour
         if (numberOfCorrectTiles == tiles.Count)
         {
             StartCoroutine(TilesAllCorrect());
+            timerIsOn = false;
+            timeText.text = /*(100 * Mathf.Round(*/timePassed/*) / 100)*/.ToString("0.00");
+            turnsText.text = numberOfTurns.ToString();
         }
-    }
-
-    float IncrementNumber(float startValue, float endValue)
-    {
-        return Mathf.Abs(startValue - endValue) / 10;
     }
 
     void FadeColor(int upOrDown)
@@ -102,13 +119,6 @@ public class TileStateManager : MonoBehaviour
             coloredGoals[h].color = new Color(coloredGoals[h].color.r + newRValue * upOrDown, coloredGoals[h].color.g + newGValue * upOrDown, coloredGoals[h].color.b + newBValue * upOrDown);
         }
     }
-
-    /*for (int j = 0; j < tiles.Count; j++)
-            {
-                tiles[j].GetComponent<Image>().color = new Color(tiles[j].GetComponent<Image>().color.r - 0.03f, tiles[j].GetComponent<Image>().color.g - 0, tiles[j].GetComponent<Image>().color.b - 0);
-            }
-
-            backgroundPanel.GetComponent<Image>().color = new Color(backgroundPanel.GetComponent<Image>().color.r - 0.03f, backgroundPanel.GetComponent<Image>().color.g - 0, backgroundPanel.GetComponent<Image>().color.b - 0);*/
 
     IEnumerator TilesAllCorrect()
     {

@@ -46,6 +46,8 @@ public class RotateTile : MonoBehaviour, IPointerClickHandler
 
             transform.eulerAngles = new Vector3(0, 0, Mathf.Round(transform.eulerAngles.z));
 
+            tilesStateManager.numberOfTurns++;
+
             if (transform.eulerAngles.z == 0)
             {
                 isCorrect = true;
