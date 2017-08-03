@@ -48,7 +48,7 @@ public class TileStateManager : MonoBehaviour
         {
             StartCoroutine(TilesAllCorrect());
             timerIsOn = false;
-            timeText.text = /*(100 * Mathf.Round(*/timePassed/*) / 100)*/.ToString("0.00");
+            timeText.text = timePassed.ToString("0.00");
             turnsText.text = numberOfTurns.ToString();
         }
     }

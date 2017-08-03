@@ -17,6 +17,8 @@ public class SlideAway : MonoBehaviour
     ResultsFade resultsTexts;
     [SerializeField]
     TileStateManager nextStage;
+    [SerializeField]
+    bool setAsFirstSibling = true;
 
     public IEnumerator Slide()
     {
@@ -31,7 +33,10 @@ public class SlideAway : MonoBehaviour
             yield return new WaitForSeconds(0.01f);
         }
 
-        transform.SetAsFirstSibling();
+        if (setAsFirstSibling)
+        {
+            transform.SetAsFirstSibling();
+        }
 
         if (nextStage != null)
         {
