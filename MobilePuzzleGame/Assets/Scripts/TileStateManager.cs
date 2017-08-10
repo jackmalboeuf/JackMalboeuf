@@ -125,6 +125,7 @@ public class TileStateManager : MonoBehaviour
         for (int i = 0; i < tiles.Count; i++)
         {
             tiles[i].GetComponent<RotateTile>().enabled = false;
+            tiles[i].GetComponent<DragObject>().enabled = false;
         }
 
         for (int i = 0; i < tiles.Count; i++)

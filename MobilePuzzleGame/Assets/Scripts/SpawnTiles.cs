@@ -109,6 +109,11 @@ public class SpawnTiles : MonoBehaviour
     Vector2 tile1Position;
     [SerializeField]
     float tile1Rotation;
+    [Space(10)]
+    [SerializeField]
+    Transform tile1StartParent;
+    [SerializeField]
+    Transform tile1CorrectParent;
 
     [Header("Tile 2")]
     [SerializeField]
@@ -146,6 +151,11 @@ public class SpawnTiles : MonoBehaviour
     Vector2 tile2Position;
     [SerializeField]
     float tile2Rotation;
+    [Space(10)]
+    [SerializeField]
+    Transform tile2StartParent;
+    [SerializeField]
+    Transform tile2CorrectParent;
 
     [Header("Tile 3")]
     [SerializeField]
@@ -433,6 +443,8 @@ public class SpawnTiles : MonoBehaviour
     Color[] centerLineColor = new Color[9];
     Vector2[] tilePositions = new Vector2[9];
     float[] tileRotations = new float[9];
+    Transform[] tileStartParents = new Transform[2];
+    Transform[] tileCorrectParents = new Transform[2];
 
     GameObject goal1;
     GameObject goal2;
@@ -733,6 +745,12 @@ public class SpawnTiles : MonoBehaviour
         tileRotations[7] = tile8Rotation;
         tileRotations[8] = tile9Rotation;
 
+        tileStartParents[0] = tile1StartParent;
+        tileStartParents[1] = tile2StartParent;
+
+        tileCorrectParents[0] = tile1CorrectParent;
+        tileCorrectParents[1] = tile2CorrectParent;
+
         for (int i = 0; i < numberOfGoals; i++)
         {
             goals[i] = Instantiate(goalTypes[i], transform) as GameObject;
@@ -740,6 +758,7 @@ public class SpawnTiles : MonoBehaviour
             goals[i].GetComponent<Image>().color = goalColors[i];
             goals[i].transform.localEulerAngles = new Vector3(0, 0, goalRotations[i]);
             goals[i].transform.localScale = new Vector3(1, 1, 1);
+            goals[i].transform.SetAsFirstSibling();
             GetComponent<TileStateManager>().coloredGoals.Add(goals[i].GetComponent<Image>());
         }
 
@@ -749,6 +768,16 @@ public class SpawnTiles : MonoBehaviour
             tiles[i].transform.localPosition = tilePositions[i];
             tiles[i].transform.localEulerAngles = new Vector3(0, 0, tileRotations[i]);
             tiles[i].transform.localScale = new Vector3(1, 1, 1);
+
+            if (tileStartParents[i] != null && tileCorrectParents[i] != null)
+            {
+                tiles[i].AddComponent<CanvasGroup>();
+                tiles[i].AddComponent<DragObject>();
+                tiles[i].transform.SetParent(tileStartParents[i]);
+                tiles[i].transform.localPosition = new Vector2(0, 0);
+                tiles[i].GetComponent<DragObject>().correctParent = tileCorrectParents[i];
+            }
+
             tiles[i].GetComponent<RotateTile>().tilesStateManager = GetComponent<TileStateManager>();
             RotateTile rt = tiles[i].GetComponent<RotateTile>();
             GetComponent<TileStateManager>().tiles.Add(rt);

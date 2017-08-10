@@ -13,10 +13,20 @@ public class RotateTile : MonoBehaviour, IPointerClickHandler
 
     void Start()
     {
-        if (transform.eulerAngles.z == 0)
-            isCorrect = true;
+        if (GetComponent<DragObject>())
+        {
+            if (transform.eulerAngles.z == 0 && transform.parent == GetComponent<DragObject>().correctParent)
+                isCorrect = true;
+            else
+                isCorrect = false;
+        }
         else
-            isCorrect = false;
+        {
+            if (transform.eulerAngles.z == 0)
+                isCorrect = true;
+            else
+                isCorrect = false;
+        }
     }
 
     public void OnPointerClick(PointerEventData eventData)
@@ -48,6 +58,28 @@ public class RotateTile : MonoBehaviour, IPointerClickHandler
 
             tilesStateManager.numberOfTurns++;
 
+            CheckIfThisTileIsCorrect();
+
+            canRotate = true;
+        }
+    }
+
+    public void CheckIfThisTileIsCorrect()
+    {
+        if (GetComponent<DragObject>())
+        {
+            if (transform.eulerAngles.z == 0 && transform.parent == GetComponent<DragObject>().correctParent)
+            {
+                isCorrect = true;
+                tilesStateManager.CheckIfTilesAreCorrect();
+            }
+            else
+            {
+                isCorrect = false;
+            }
+        }
+        else
+        {
             if (transform.eulerAngles.z == 0)
             {
                 isCorrect = true;
@@ -57,8 +89,6 @@ public class RotateTile : MonoBehaviour, IPointerClickHandler
             {
                 isCorrect = false;
             }
-
-            canRotate = true;
         }
     }
 }

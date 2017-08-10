@@ -73,6 +73,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\BorderAnimation.cs" />
+    <Compile Include="Assets\Scripts\DragObject.cs" />
+    <Compile Include="Assets\Scripts\DropSlot.cs" />
     <Compile Include="Assets\Scripts\FadeIn.cs" />
     <Compile Include="Assets\Scripts\ITileList.cs" />
     <Compile Include="Assets\Scripts\ListWrapper.cs" />
