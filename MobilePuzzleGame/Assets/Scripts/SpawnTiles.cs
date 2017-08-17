@@ -193,6 +193,11 @@ public class SpawnTiles : MonoBehaviour
     Vector2 tile3Position;
     [SerializeField]
     float tile3Rotation;
+    [Space(10)]
+    [SerializeField]
+    Transform tile3StartParent;
+    [SerializeField]
+    Transform tile3CorrectParent;
 
     [Header("Tile 4")]
     [SerializeField]
@@ -230,6 +235,11 @@ public class SpawnTiles : MonoBehaviour
     Vector2 tile4Position;
     [SerializeField]
     float tile4Rotation;
+    [Space(10)]
+    [SerializeField]
+    Transform tile4StartParent;
+    [SerializeField]
+    Transform tile4CorrectParent;
 
     [Header("Tile 5")]
     [SerializeField]
@@ -267,6 +277,11 @@ public class SpawnTiles : MonoBehaviour
     Vector2 tile5Position;
     [SerializeField]
     float tile5Rotation;
+    [Space(10)]
+    [SerializeField]
+    Transform tile5StartParent;
+    [SerializeField]
+    Transform tile5CorrectParent;
 
     [Header("Tile 6")]
     [SerializeField]
@@ -304,6 +319,11 @@ public class SpawnTiles : MonoBehaviour
     Vector2 tile6Position;
     [SerializeField]
     float tile6Rotation;
+    [Space(10)]
+    [SerializeField]
+    Transform tile6StartParent;
+    [SerializeField]
+    Transform tile6CorrectParent;
 
     [Header("Tile 7")]
     [SerializeField]
@@ -341,6 +361,11 @@ public class SpawnTiles : MonoBehaviour
     Vector2 tile7Position;
     [SerializeField]
     float tile7Rotation;
+    [Space(10)]
+    [SerializeField]
+    Transform tile7StartParent;
+    [SerializeField]
+    Transform tile7CorrectParent;
 
     [Header("Tile 8")]
     [SerializeField]
@@ -378,6 +403,11 @@ public class SpawnTiles : MonoBehaviour
     Vector2 tile8Position;
     [SerializeField]
     float tile8Rotation;
+    [Space(10)]
+    [SerializeField]
+    Transform tile8StartParent;
+    [SerializeField]
+    Transform tile8CorrectParent;
 
     [Header("Tile 9")]
     [SerializeField]
@@ -415,6 +445,11 @@ public class SpawnTiles : MonoBehaviour
     Vector2 tile9Position;
     [SerializeField]
     float tile9Rotation;
+    [Space(10)]
+    [SerializeField]
+    Transform tile9StartParent;
+    [SerializeField]
+    Transform tile9CorrectParent;
 
     GameObject[] goals = new GameObject[6];
     GameObject[] goalTypes = new GameObject[6];
@@ -443,8 +478,8 @@ public class SpawnTiles : MonoBehaviour
     Color[] centerLineColor = new Color[9];
     Vector2[] tilePositions = new Vector2[9];
     float[] tileRotations = new float[9];
-    Transform[] tileStartParents = new Transform[2];
-    Transform[] tileCorrectParents = new Transform[2];
+    Transform[] tileStartParents = new Transform[9];
+    Transform[] tileCorrectParents = new Transform[9];
 
     GameObject goal1;
     GameObject goal2;
@@ -747,9 +782,23 @@ public class SpawnTiles : MonoBehaviour
 
         tileStartParents[0] = tile1StartParent;
         tileStartParents[1] = tile2StartParent;
+        tileStartParents[2] = tile3StartParent;
+        tileStartParents[3] = tile4StartParent;
+        tileStartParents[4] = tile5StartParent;
+        tileStartParents[5] = tile6StartParent;
+        tileStartParents[6] = tile7StartParent;
+        tileStartParents[7] = tile8StartParent;
+        tileStartParents[8] = tile9StartParent;
 
         tileCorrectParents[0] = tile1CorrectParent;
         tileCorrectParents[1] = tile2CorrectParent;
+        tileCorrectParents[2] = tile3CorrectParent;
+        tileCorrectParents[3] = tile4CorrectParent;
+        tileCorrectParents[4] = tile5CorrectParent;
+        tileCorrectParents[5] = tile6CorrectParent;
+        tileCorrectParents[6] = tile7CorrectParent;
+        tileCorrectParents[7] = tile8CorrectParent;
+        tileCorrectParents[8] = tile9CorrectParent;
 
         for (int i = 0; i < numberOfGoals; i++)
         {
