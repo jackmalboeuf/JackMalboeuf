@@ -103,6 +103,20 @@ public class SpawnTiles : MonoBehaviour
     float tile1Line4Rotation;
     [Space(10)]
     [SerializeField]
+    GameObject tile1Line5Type;
+    [SerializeField]
+    Color tile1Line5Color;
+    [SerializeField]
+    float tile1Line5Rotation;
+    [Space(10)]
+    [SerializeField]
+    GameObject tile1Line6Type;
+    [SerializeField]
+    Color tile1Line6Color;
+    [SerializeField]
+    float tile1Line6Rotation;
+    [Space(10)]
+    [SerializeField]
     Color tile1CenterLineColor;
     [Space(10)]
     [SerializeField]
@@ -143,6 +157,20 @@ public class SpawnTiles : MonoBehaviour
     Color tile2Line4Color;
     [SerializeField]
     float tile2Line4Rotation;
+    [Space(10)]
+    [SerializeField]
+    GameObject tile2Line5Type;
+    [SerializeField]
+    Color tile2Line5Color;
+    [SerializeField]
+    float tile2Line5Rotation;
+    [Space(10)]
+    [SerializeField]
+    GameObject tile2Line6Type;
+    [SerializeField]
+    Color tile2Line6Color;
+    [SerializeField]
+    float tile2Line6Rotation;
     [Space(10)]
     [SerializeField]
     Color tile2CenterLineColor;
@@ -187,6 +215,20 @@ public class SpawnTiles : MonoBehaviour
     float tile3Line4Rotation;
     [Space(10)]
     [SerializeField]
+    GameObject tile3Line5Type;
+    [SerializeField]
+    Color tile3Line5Color;
+    [SerializeField]
+    float tile3Line5Rotation;
+    [Space(10)]
+    [SerializeField]
+    GameObject tile3Line6Type;
+    [SerializeField]
+    Color tile3Line6Color;
+    [SerializeField]
+    float tile3Line6Rotation;
+    [Space(10)]
+    [SerializeField]
     Color tile3CenterLineColor;
     [Space(10)]
     [SerializeField]
@@ -227,6 +269,20 @@ public class SpawnTiles : MonoBehaviour
     Color tile4Line4Color;
     [SerializeField]
     float tile4Line4Rotation;
+    [Space(10)]
+    [SerializeField]
+    GameObject tile4Line5Type;
+    [SerializeField]
+    Color tile4Line5Color;
+    [SerializeField]
+    float tile4Line5Rotation;
+    [Space(10)]
+    [SerializeField]
+    GameObject tile4Line6Type;
+    [SerializeField]
+    Color tile4Line6Color;
+    [SerializeField]
+    float tile4Line6Rotation;
     [Space(10)]
     [SerializeField]
     Color tile4CenterLineColor;
@@ -271,6 +327,20 @@ public class SpawnTiles : MonoBehaviour
     float tile5Line4Rotation;
     [Space(10)]
     [SerializeField]
+    GameObject tile5Line5Type;
+    [SerializeField]
+    Color tile5Line5Color;
+    [SerializeField]
+    float tile5Line5Rotation;
+    [Space(10)]
+    [SerializeField]
+    GameObject tile5Line6Type;
+    [SerializeField]
+    Color tile5Line6Color;
+    [SerializeField]
+    float tile5Line6Rotation;
+    [Space(10)]
+    [SerializeField]
     Color tile5CenterLineColor;
     [Space(10)]
     [SerializeField]
@@ -311,6 +381,20 @@ public class SpawnTiles : MonoBehaviour
     Color tile6Line4Color;
     [SerializeField]
     float tile6Line4Rotation;
+    [Space(10)]
+    [SerializeField]
+    GameObject tile6Line5Type;
+    [SerializeField]
+    Color tile6Line5Color;
+    [SerializeField]
+    float tile6Line5Rotation;
+    [Space(10)]
+    [SerializeField]
+    GameObject tile6Line6Type;
+    [SerializeField]
+    Color tile6Line6Color;
+    [SerializeField]
+    float tile6Line6Rotation;
     [Space(10)]
     [SerializeField]
     Color tile6CenterLineColor;
@@ -355,6 +439,20 @@ public class SpawnTiles : MonoBehaviour
     float tile7Line4Rotation;
     [Space(10)]
     [SerializeField]
+    GameObject tile7Line5Type;
+    [SerializeField]
+    Color tile7Line5Color;
+    [SerializeField]
+    float tile7Line5Rotation;
+    [Space(10)]
+    [SerializeField]
+    GameObject tile7Line6Type;
+    [SerializeField]
+    Color tile7Line6Color;
+    [SerializeField]
+    float tile7Line6Rotation;
+    [Space(10)]
+    [SerializeField]
     Color tile7CenterLineColor;
     [Space(10)]
     [SerializeField]
@@ -395,6 +493,20 @@ public class SpawnTiles : MonoBehaviour
     Color tile8Line4Color;
     [SerializeField]
     float tile8Line4Rotation;
+    [Space(10)]
+    [SerializeField]
+    GameObject tile8Line5Type;
+    [SerializeField]
+    Color tile8Line5Color;
+    [SerializeField]
+    float tile8Line5Rotation;
+    [Space(10)]
+    [SerializeField]
+    GameObject tile8Line6Type;
+    [SerializeField]
+    Color tile8Line6Color;
+    [SerializeField]
+    float tile8Line6Rotation;
     [Space(10)]
     [SerializeField]
     Color tile8CenterLineColor;
@@ -439,6 +551,20 @@ public class SpawnTiles : MonoBehaviour
     float tile9Line4Rotation;
     [Space(10)]
     [SerializeField]
+    GameObject tile9Line5Type;
+    [SerializeField]
+    Color tile9Line5Color;
+    [SerializeField]
+    float tile9Line5Rotation;
+    [Space(10)]
+    [SerializeField]
+    GameObject tile9Line6Type;
+    [SerializeField]
+    Color tile9Line6Color;
+    [SerializeField]
+    float tile9Line6Rotation;
+    [Space(10)]
+    [SerializeField]
     Color tile9CenterLineColor;
     [Space(10)]
     [SerializeField]
@@ -462,6 +588,8 @@ public class SpawnTiles : MonoBehaviour
     GameObject[] line2 = new GameObject[9];
     GameObject[] line3 = new GameObject[9];
     GameObject[] line4 = new GameObject[9];
+    GameObject[] line5 = new GameObject[9];
+    GameObject[] line6 = new GameObject[9];
     GameObject[] centerLine = new GameObject[9];
     GameObject[] line1Type = new GameObject[9];
     Color[] line1Color = new Color[9];
@@ -475,6 +603,12 @@ public class SpawnTiles : MonoBehaviour
     GameObject[] line4Type = new GameObject[9];
     Color[] line4Color = new Color[9];
     float[] line4Rotation = new float[9];
+    GameObject[] line5Type = new GameObject[9];
+    Color[] line5Color = new Color[9];
+    float[] line5Rotation = new float[9];
+    GameObject[] line6Type = new GameObject[9];
+    Color[] line6Color = new Color[9];
+    float[] line6Rotation = new float[9];
     Color[] centerLineColor = new Color[9];
     Vector2[] tilePositions = new Vector2[9];
     float[] tileRotations = new float[9];
@@ -537,6 +671,24 @@ public class SpawnTiles : MonoBehaviour
     GameObject tile7Line4;
     GameObject tile8Line4;
     GameObject tile9Line4;
+    GameObject tile1Line5;
+    GameObject tile2Line5;
+    GameObject tile3Line5;
+    GameObject tile4Line5;
+    GameObject tile5Line5;
+    GameObject tile6Line5;
+    GameObject tile7Line5;
+    GameObject tile8Line5;
+    GameObject tile9Line5;
+    GameObject tile1Line6;
+    GameObject tile2Line6;
+    GameObject tile3Line6;
+    GameObject tile4Line6;
+    GameObject tile5Line6;
+    GameObject tile6Line6;
+    GameObject tile7Line6;
+    GameObject tile8Line6;
+    GameObject tile9Line6;
 
     void Start()
     {
@@ -629,6 +781,26 @@ public class SpawnTiles : MonoBehaviour
         line4[6] = tile7Line4;
         line4[7] = tile8Line4;
         line4[8] = tile9Line4;
+
+        line5[0] = tile1Line5;
+        line5[1] = tile2Line5;
+        line5[2] = tile3Line5;
+        line5[3] = tile4Line5;
+        line5[4] = tile5Line5;
+        line5[5] = tile6Line5;
+        line5[6] = tile7Line5;
+        line5[7] = tile8Line5;
+        line5[8] = tile9Line5;
+
+        line6[0] = tile1Line6;
+        line6[1] = tile2Line6;
+        line6[2] = tile3Line6;
+        line6[3] = tile4Line6;
+        line6[4] = tile5Line6;
+        line6[5] = tile6Line6;
+        line6[6] = tile7Line6;
+        line6[7] = tile8Line6;
+        line6[8] = tile9Line6;
 
         line1Type[0] = tile1Line1Type;
         line1Type[1] = tile2Line1Type;
@@ -750,6 +922,66 @@ public class SpawnTiles : MonoBehaviour
         line4Rotation[7] = tile8Line4Rotation;
         line4Rotation[8] = tile9Line4Rotation;
 
+        line5Type[0] = tile1Line5Type;
+        line5Type[1] = tile2Line5Type;
+        line5Type[2] = tile3Line5Type;
+        line5Type[3] = tile4Line5Type;
+        line5Type[4] = tile5Line5Type;
+        line5Type[5] = tile6Line5Type;
+        line5Type[6] = tile7Line5Type;
+        line5Type[7] = tile8Line5Type;
+        line5Type[8] = tile9Line5Type;
+        
+        line5Color[0] = tile1Line5Color;
+        line5Color[1] = tile2Line5Color;
+        line5Color[2] = tile3Line5Color;
+        line5Color[3] = tile4Line5Color;
+        line5Color[4] = tile5Line5Color;
+        line5Color[5] = tile6Line5Color;
+        line5Color[6] = tile7Line5Color;
+        line5Color[7] = tile8Line5Color;
+        line5Color[8] = tile9Line5Color;
+        
+        line5Rotation[0] = tile1Line5Rotation;
+        line5Rotation[1] = tile2Line5Rotation;
+        line5Rotation[2] = tile3Line5Rotation;
+        line5Rotation[3] = tile4Line5Rotation;
+        line5Rotation[4] = tile5Line5Rotation;
+        line5Rotation[5] = tile6Line5Rotation;
+        line5Rotation[6] = tile7Line5Rotation;
+        line5Rotation[7] = tile8Line5Rotation;
+        line5Rotation[8] = tile9Line5Rotation;
+
+        line6Type[0] = tile1Line6Type;
+        line6Type[1] = tile2Line6Type;
+        line6Type[2] = tile3Line6Type;
+        line6Type[3] = tile4Line6Type;
+        line6Type[4] = tile5Line6Type;
+        line6Type[5] = tile6Line6Type;
+        line6Type[6] = tile7Line6Type;
+        line6Type[7] = tile8Line6Type;
+        line6Type[8] = tile9Line6Type;
+
+        line6Color[0] = tile1Line6Color;
+        line6Color[1] = tile2Line6Color;
+        line6Color[2] = tile3Line6Color;
+        line6Color[3] = tile4Line6Color;
+        line6Color[4] = tile5Line6Color;
+        line6Color[5] = tile6Line6Color;
+        line6Color[6] = tile7Line6Color;
+        line6Color[7] = tile8Line6Color;
+        line6Color[8] = tile9Line6Color;
+
+        line6Rotation[0] = tile1Line6Rotation;
+        line6Rotation[1] = tile2Line6Rotation;
+        line6Rotation[2] = tile3Line6Rotation;
+        line6Rotation[3] = tile4Line6Rotation;
+        line6Rotation[4] = tile5Line6Rotation;
+        line6Rotation[5] = tile6Line6Rotation;
+        line6Rotation[6] = tile7Line6Rotation;
+        line6Rotation[7] = tile8Line6Rotation;
+        line6Rotation[8] = tile9Line6Rotation;
+
         centerLineColor[0] = tile1CenterLineColor;
         centerLineColor[1] = tile2CenterLineColor;
         centerLineColor[2] = tile3CenterLineColor;
@@ -865,6 +1097,24 @@ public class SpawnTiles : MonoBehaviour
                 line4[i].GetComponent<Image>().color = line4Color[i];
                 line4[i].transform.localEulerAngles = new Vector3(0, 0, line4Rotation[i]);
                 line4[i].transform.localScale = new Vector3(1, 1, 1);
+            }
+
+            if (line5Type[i] != null)
+            {
+                line5[i] = Instantiate(line5Type[i], tiles[i].transform) as GameObject;
+                line5[i].transform.localPosition = new Vector2(0, 0);
+                line5[i].GetComponent<Image>().color = line5Color[i];
+                line5[i].transform.localEulerAngles = new Vector3(0, 0, line5Rotation[i]);
+                line5[i].transform.localScale = new Vector3(1, 1, 1);
+            }
+
+            if (line6Type[i] != null)
+            {
+                line6[i] = Instantiate(line6Type[i], tiles[i].transform) as GameObject;
+                line6[i].transform.localPosition = new Vector2(0, 0);
+                line6[i].GetComponent<Image>().color = line6Color[i];
+                line6[i].transform.localEulerAngles = new Vector3(0, 0, line6Rotation[i]);
+                line6[i].transform.localScale = new Vector3(1, 1, 1);
             }
 
             centerLine[i] = Instantiate(centerPrefab, tiles[i].transform) as GameObject;
